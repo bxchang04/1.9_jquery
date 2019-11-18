@@ -43,8 +43,9 @@ var pokemonRepository = (function() {    //Start of IIFE
         add(pokemon);
       });
     }).catch(function(e) {
-      console.error(e);
-    })
+      /* eslint-disable no-console */
+        console.error(e);
+      /* eslint-enable no-console */    })
   }
 
   function loadDetails(item) {
@@ -57,13 +58,14 @@ var pokemonRepository = (function() {    //Start of IIFE
       item.weight = details.weight;
       item.types = Object.keys(details.types);
     }).catch(function(e) {
-      console.error(e);
-    })
+      /* eslint-disable no-console */
+        console.error(e);
+      /* eslint-enable no-console */    })
   }
 
   //Function to show modal for Pokemon data
   function showModal(item) {
-    console.log('TCL: showModal -> item', item.imageUrl);
+    // console.log('TCL: showModal -> item', item.imageUrl);
 
     //create element for Pokemon name
     var $nameElement = $('h5');
@@ -79,10 +81,10 @@ var pokemonRepository = (function() {    //Start of IIFE
   //Function to show details of each Pokemon
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
-      console.log(item);
+      // console.log(item);
       return item;
     }).then(function(item) {
-      console.log('TCL: showDetails -> item', item);
+      // console.log('TCL: showDetails -> item', item);
       showModal(item);
     });
   }
